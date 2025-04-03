@@ -1,53 +1,46 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 class Solution {
 public:
-    bool isValidSudoku(vector<vector<char>>& board) {
-        unordered_map<char, int> m1, m2, m3;
+    bool isValidSudoku(vector<vector<char>>& b) {
 
         for (int i = 0; i < 9; i++) {
-            m1.clear();
-            m2.clear();
-
+            vector<int> v1(9, 1);
             for (int j = 0; j < 9; j++) {
-                
-                if (board[i][j] >= '1' && board[i][j] <= '9') {
-                    if (m1.find(board[i][j]) != m1.end()) {
+                if (b[i][j] != '.') {
+                    int k = (b[i][j] - '0');
+                    v1[k - 1] -= 1;
+                    if (v1[k - 1] < 0)
                         return false;
-                    }
-                    m1[board[i][j]]++;
-                }
-
-                
-                if (board[j][i] >= '1' && board[j][i] <= '9') {
-                    if (m2.find(board[j][i]) != m2.end()) {
-                        return false;
-                    }
-                    m2[board[j][i]]++;
                 }
             }
         }
 
-        for (int x = 0; x < 9; x += 3) {
-            for (int y = 0; y < 9; y += 3) {
-                m3.clear();
-                
-                for (int i = 0; i < 3; i++) {
-                    for (int j = 0; j < 3; j++) {
-                        char num = board[x + i][y + j];
-
-                        if (num >= '1' && num <= '9') {
-                            if (m3.find(num) != m3.end()) {
+        for (int j = 0; j < 9; j++) {
+            vector<int> v2(9, 1);
+            for (int i = 0; i < 9; i++) {
+                if (b[i][j] != '.') {
+                    int k = b[i][j] - '0';
+                    v2[k - 1] -= 1;
+                    if (v2[k - 1] < 0)
+                        return false;
+                }
+            }
+        }
+    
+        for (int i = 0; i < 9; i += 3) {
+            for (int j = 0; j < 9; j += 3) {
+                vector<int> v3(9, 1);
+                for (int i1 = 0; i1 < 3; i1++) {
+                    for (int j1 = 0; j1 < 3; j1++) {
+                        if (b[i + i1][j + j1] != '.') {
+                            int k = b[i + i1][j + j1] - '0';
+                            v3[k - 1] -= 1;
+                            if (v3[k - 1] < 0)
                                 return false;
-                            }
-                            m3[num]++;
                         }
                     }
                 }
             }
         }
-
         return true;
     }
 };
