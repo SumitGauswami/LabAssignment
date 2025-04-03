@@ -2,7 +2,7 @@ class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
        sort(nums.begin(),nums.end());
-       int c=0;
+       int c=1;
         for(int i=1;i<nums.size();i++){
           if(nums[i]==nums[i-1]+1) c++;
           else if(nums[i]==nums[i-1]);
@@ -10,6 +10,6 @@ public:
             break;
           }
         }
-        return c+1;
+        return c;
     }
 };
