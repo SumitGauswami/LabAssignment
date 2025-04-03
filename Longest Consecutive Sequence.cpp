@@ -10,7 +10,7 @@ public:
           else {
           if(mc<c) {
               mc=c;
-              c=0;
+              c=1;
           }
         }
         return mc;
