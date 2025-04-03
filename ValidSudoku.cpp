@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool isValidSudoku(vector<vector<char>>& b) {
+        bool isValidSudoku(vector<vector<char>>& b) {
 
         for (int i = 0; i < 9; i++) {
             vector<int> v1(9, 1);
@@ -13,6 +13,7 @@ public:
                 }
             }
         }
+        
 
         for (int j = 0; j < 9; j++) {
             vector<int> v2(9, 1);
@@ -25,6 +26,7 @@ public:
                 }
             }
         }
+        
     
         for (int i = 0; i < 9; i += 3) {
             for (int j = 0; j < 9; j += 3) {
@@ -41,6 +43,7 @@ public:
                 }
             }
         }
+        
         return true;
     }
 };
