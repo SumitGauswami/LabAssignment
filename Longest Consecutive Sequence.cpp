@@ -8,7 +8,9 @@ public:
           if(nums[i]==nums[i-1]+1) c++;
           else if(nums[i]==nums[i-1]);
           else {
-          if(mc<c) mc=c;
+          if(mc<c) {
+              mc=c;
+              c=0;
           }
         }
         return mc;
